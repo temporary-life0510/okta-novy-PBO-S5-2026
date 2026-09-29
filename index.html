@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Biodata Mahasiswa - UM Palangkaraya</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigasi -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-graduation-cap brand-icon"></i>
+                <h2>UM Palangkaraya</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-user-graduate"></i> Data Mahasiswa</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i> Program Studi</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-gear"></i> Pengaturan</a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 UM Palangkaraya</p>
+            </div>
+        </aside>
+
+        <!-- Area Konten Utama -->
+        <main class="main-content">
+            <!-- Header Dashboard -->
+            <header class="header">
+                <div class="header-title">
+                    <h1>Dashboard Biodata Mahasiswa</h1>
+                    <p>Fakultas Bahasa Ilmu Pengetahuan dan Teknologi</p>
+                </div>
+                <div class="user-profile">
+                    <i class="fa-solid fa-bell icon-btn"></i>
+                    <div class="avatar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <span>Admin Akademik</span>
+                </div>
+            </header>
+
+            <!-- Ringkasan Statistik -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green-bg">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="total-mahasiswa">2</span>
+                        <span class="stat-label">Total Mahasiswa</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon emerald-bg">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">Pendidikan TI</span>
+                        <span class="stat-label">Program Studi</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon lime-bg">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">FBIT</span>
+                        <span class="stat-label">Fakultas</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon forest-bg">
+                        <i class="fa-solid fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">Aktif</span>
+                        <span class="stat-label">Status Akademik</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search & Actions Bar -->
+            <section class="action-bar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Cari berdasarkan nama atau NIM...">
+                </div>
+                <div class="filter-box">
+                    <button class="btn btn-filter" id="btn-reset"><i class="fa-solid fa-rotate-left"></i> Reset Filter</button>
+                </div>
+            </section>
+
+            <!-- Kartu Data Mahasiswa -->
+            <section class="cards-section">
+                <div class="section-header">
+                    <h2>Daftar Mahasiswa</h2>
+                </div>
+                <div class="student-grid" id="student-grid">
+                    <!-- Kartu mahasiswa akan dirender otomatis oleh JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Detail Mahasiswa -->
+    <div class="modal-overlay" id="detail-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="close-modal">&times;</button>
+            <div class="modal-header">
+                <div class="modal-avatar">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h2 id="modal-name">Nama Mahasiswa</h2>
+                <span class="badge" id="modal-nim">NIM: -</span>
+            </div>
+            <div class="modal-body">
+                <div class="detail-row">
+                    <span class="detail-label"><i class="fa-solid fa-id-card"></i> Nomor Induk Mahasiswa (NIM):</span>
+                    <span class="detail-value" id="modal-detail-nim">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label"><i class="fa-solid fa-book"></i> Program Studi:</span>
+                    <span class="detail-value" id="modal-prodi">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label"><i class="fa-solid fa-school"></i> Fakultas:</span>
+                    <span class="detail-value" id="modal-fakultas">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label"><i class="fa-solid fa-university"></i> Perguruan Tinggi:</span>
+                    <span class="detail-value" id="modal-univ">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label"><i class="fa-solid fa-signal"></i> Status Mahasiswa:</span>
+                    <span class="detail-value badge-success">Aktif</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Cetak Biodata</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
